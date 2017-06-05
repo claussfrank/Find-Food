@@ -1,0 +1,16 @@
+
+header>nav{
+    background-color: #fb8c00;
+    padding-left: 7%;
+}
+
+section > div > #add{
+    background-color: #00acc1;
+}
+#map {
+  height: 400px;
+  width: 100%;
+}
+#cartasContainer{
+    margin-top: 7%;
+}

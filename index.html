@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FindFood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo col s6 m3 l3">FindFood</a>
+            </div>
+        </nav>
+        <div class="row">
+            <form class="col s12 m3 offset-m9">
+                <div class="input-field waves-effect waves-light">
+                  <input id="search" type="search" required>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+                </div>
+            </form>  
+        </div>
+    </header>
+    
+<!--    Seccion de Mapa-->  
+     
+    <section class="container">
+      <h5>Ubicación</h5>
+      <div id="map"></div>
+    </section>
+    
+<!--    Seccion de tarjetas-->
+    
+    <section id="cartasContainer">
+        <div class="row">
+            <div class="col s12 m7 offset-m1 ">
+                <h5 class="header">Café de Tacuba</h5>
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src="assets/img/Tacuba.png">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                          <p>Calle de Tacuba 28, Cuauhtémoc, Centro, 06010 Ciudad de México, CDMX</p>
+                        </div>
+                        <div class="card-action">
+                          <a href="#">Ver Ubicación</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m7 offset-m1 ">
+                <h5 class="header">Te Mataré Santana</h5>
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src="assets/img/Santana.png">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                          <p>San José Insurgentes, 03900 Ciudad de México, CDMX</p>
+                        </div>
+                        <div class="card-action">
+                          <a href="#">Ver Ubicación</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m7 offset-m1 ">
+                <h5 class="header">La Poblanita de Tacubaya</h5>
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src="assets/img/poblana.png">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                          <p>Gobernador Luis G. Vieyra 12, San Miguel Chapultepec I Secc, 11850 Miguel Hidalgo, CDMX</p>
+                        </div>
+                        <div class="card-action">
+                          <a href="#">Ver Ubicación</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDe2IxjHW8JEg5x3frjLzM6u2gwyc-915I&callback=initMap"></script>
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/app.js"></script>    
+</body>
+</html>

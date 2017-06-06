@@ -11,6 +11,9 @@ section > div > #add{
   height: 400px;
   width: 100%;
 }
-#cartasContainer{
+.cartasContainer{
     margin-top: 7%;
+}
+.lugar{
+   cursor: pointer; 
 }

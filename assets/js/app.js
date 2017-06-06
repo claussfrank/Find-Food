@@ -45,6 +45,7 @@ var plantillaRestaurante = '<div class="row restaurant">' +
 
 var cargarPagina = function(){
     obtenerUbicacionActual();
+    //lo  utilizamos  para   crear  el  elemento que  que  no  se  crean  en  el html  y  se hacen  dinamicamente
     $(document).on('click','.lugar', cambiarUbicacion);    
     $("#search-form").submit(filtrarRestaurante); 
 };

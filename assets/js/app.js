@@ -2,19 +2,25 @@ var restaurantes = [
     {
         "restaurant":"Café de Tacuba",
         "direccion":"Calle de Tacuba 28, Cuauhtémoc, Centro, 06010 Ciudad de México, CDMX",
-        "foto":"assets/img/Tacuba.png"  
+        "foto":"assets/img/Tacuba.png", 
+        "latitud":"19.4357584",
+        "longitud":"-99.1398417"
     },
     
     {
         "restaurant":"Te Mataré Santana",
         "direccion":"San José Insurgentes, 03900 Ciudad de México, CDMX",
-        "foto":"assets/img/Santana.png"
+        "foto":"assets/img/Santana.png",
+        "latitud":"19.3638354",
+        "longitud":"-99.185198"
     },
     
     {
         "restaurant":"La Poblanita de Tacubaya",
         "direccion":"Gobernador Luis G. Vieyra 12, San Miguel Chapultepec I Secc, 11850 Miguel Hidalgo, CDMX",
-        "foto":"assets/img/poblana.png"
+        "foto":"assets/img/poblana.png",
+        "latitud":"19.404869",
+        "longitud":"-99.1841983"
     }
 ];
 
@@ -30,7 +36,7 @@ var plantillaRestaurante = '<div class="row restaurant">' +
                           '<p>**Direccion**</p>' +
                         '</div>' +
                         '<div class="card-action">' +
-                          '<a href="#">Ver Ubicación</a>' +
+                          '<a class="lugar" data-latitud="**latitud**" data-longitud="**longitud**">Ver Ubicación</a>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -38,7 +44,8 @@ var plantillaRestaurante = '<div class="row restaurant">' +
         '</div>';
 
 var cargarPagina = function(){
-    
+    obtenerUbicacionActual();
+    $(document).on('click','.lugar', cambiarUbicacion);    
     $("#search-form").submit(filtrarRestaurante); 
 };
 
@@ -63,24 +70,74 @@ var mostrarRestaurante = function (restaurantes){
     restaurantes.forEach(function(restaurant){
     plantillaFinal += plantillaRestaurante.replace("**Restaurante**",restaurant.restaurant)
         .replace("**Direccion**",restaurant.direccion)
-        .replace("**Foto**",restaurant.foto);
+        .replace("**Foto**",restaurant.foto)
+        .replace("**latitud**",restaurant.latitud)
+        .replace("**longitud**",restaurant.longitud);
     });
     $(".cartasContainer").html(plantillaFinal);
 };
 
-function initMap() {
-  var uluru = {lat: 19.417575, lng: -99.164701};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 17,
-    center: uluru
+ function obtenerUbicacionActual(){
+     if (navigator.geolocation){
+         navigator.geolocation.getCurrentPosition(mostrarPossicionActual);
+     } else {
+         alert("Geolocalización no es soportado en tu navegador");
+     }
+ }
+
+function mostrarPossicionActual(posicion){
+    var latitud = posicion.coords.latitude;
+    var longitud = posicion.coords.longitude;
+    
+    var coordenadas ={
+        lat:latitud,
+        lng:longitud
+    };
+   mostrarMapa(coordenadas); 
+}
+
+// @coordenadas: { lat: <number>, lng: <number> }
+function mostrarMapa(coordenadas) {
+  var map = new google.maps.Map($('.map')[0], {
+    zoom: 18,
+    center: coordenadas
   });
   var marker = new google.maps.Marker({
-    position: uluru,
+    position: coordenadas,
     map: map
   });
 }
 
+function cambiarUbicacion(){
+  var latitud = $(this).data("latitud");
+  var longitud = $(this).data("longitud");
 
+  var coordenadas = {
+    lat: latitud,
+    lng: longitud
+  };
+
+  console.log(coordenadas);
+  mostrarMapa(coordenadas);
+}
+
+
+
+
+
+//function initMap() {
+//  var uluru = {lat: 19.417575, lng: -99.164701};
+//  var map = new google.maps.Map(document.getElementById('map'), {
+//    zoom: 17,
+//    center: uluru
+//  });
+//  var marker = new google.maps.Marker({
+//    position: uluru,
+//    map: map
+//  });
+//}
+//
+//
 
 
 

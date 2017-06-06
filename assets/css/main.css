@@ -14,3 +14,6 @@ section > div > #add{
 .cartasContainer{
     margin-top: 7%;
 }
+.lugar{
+   cursor: pointer; 
+}
